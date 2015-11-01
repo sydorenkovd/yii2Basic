@@ -5,7 +5,9 @@ use yii\widgets\LinkPager;
 <ul>
 <?php
 foreach($comments as $comment){
-    echo "<li>". $comment->name ." : ".$comment->text . "</li>";
+    $url= Yii::$app->urlManager->createUrl(['site/user', 'name'=>$comment->name]);
+    echo "<li><b></b><a href=". $url .">". $comment->name ."</a>:</b>".$comment->text ."</li>";
 }
-?>
+    ?>
+</ul>
     <?=LinkPager::widget(['pagination'=>$pagination])?>
