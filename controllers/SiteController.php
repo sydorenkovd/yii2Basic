@@ -4,11 +4,13 @@ namespace app\controllers;
 
 use Yii;
 use yii\filters\AccessControl;
+use yii\helpers\Html;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\MyForm;
+use yii\web\UploadedFile;
 
 class SiteController extends Controller
 {
@@ -95,8 +97,28 @@ class SiteController extends Controller
 //    public function actionHello($message = 'World'){
 //        return $this->render('Hello', ['message'=>$message]);
 //    }
+    /**
+     *
+     * @return string
+     */
     public function actionForm(){
         $form = new MyForm();
-        return $this->render('form', ['form'=>$form]);
+        if($form->load(Yii::$app->request->post()) and $form->validate()){
+            $name = Html::encode($form->name);
+            $email = Html::encode($form->email);
+//            $file = $form->file;
+            $form->file = UploadedFile::getInstance($form, 'file');
+            $form->file->saveAs("img/".$form->file->baseName.".".$form->file->extension);
+        } else {
+            $name = '';
+            $email = '';
+//            $file = '';
+        }
+        return $this->render('form', ['form'=>$form,
+        'name'=>$name,
+        'email'=>$email,
+//                'file'=>$file,
+        ]
+        );
     }
 }
