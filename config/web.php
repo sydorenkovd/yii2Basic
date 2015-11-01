@@ -12,7 +12,7 @@ $config = [
             'cookieValidationKey' => '19701izutef',
         ],
         'urlManager'=> [
-            'enablePrettyUrl'=> true,
+            'enablePrettyUrl'=> false,
             'showScriptName'=> false,
             'rules'=>[
                 'about'=>'site/about'
