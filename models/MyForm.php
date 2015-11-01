@@ -10,7 +10,7 @@ class MyForm extends Model{
     public function rules(){
         return [ [['name', 'email'], 'required', 'message'=>'Can\'t be empty'],
         ['email', 'email', 'message'=>'PLease, enter correct email-address'],
-            [['file'], 'file', 'extensions'=>'jpg, gif']
+            [['file'], 'file', 'extensions'=>['jpg', 'gif']]
         ];
     }
 }
