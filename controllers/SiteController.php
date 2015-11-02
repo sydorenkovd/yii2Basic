@@ -2,17 +2,22 @@
 
 namespace app\controllers;
 
+use app\models\MyForm;
 use Yii;
-use yii\data\Pagination;
 use yii\filters\AccessControl;
-use yii\helpers\Html;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
+use yii\data\Pagination;
+use yii\helpers\Html;
 use app\models\LoginForm;
 use app\models\ContactForm;
-use app\models\MyForm;
-use app\models\Comments;
-use yii\web\UploadedFile;
+use app\models\Posts;
+use app\models\Courses;
+use app\models\Reviews;
+use app\models\Sites;
+use app\models\Minicourses;
+use app\models\SiteForm;
+use app\models\SearchForm;
 
 class SiteController extends Controller
 {
@@ -38,6 +43,17 @@ class SiteController extends Controller
             ],
         ];
     }
+	
+	public function beforeAction($action)
+	{
+		$model = new SearchForm();
+		if ($model->load(Yii::$app->request->post()) && $model->validate()) 
+		{
+			$q = Html::encode($model->q);
+			return $this->redirect(Yii::$app->urlManager->createUrl(['site/search', 'q' => $q]));
+		}
+		return true;
+	}
 
     public function actions()
     {
@@ -54,105 +70,146 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
-        return $this->render('index');
+		$query = Posts::find()->where(['hide' => 0]);
+		$pagination = new Pagination([
+			'defaultPageSize' => 5,
+			'totalCount' => $query->count()
+		]);
+		
+		$posts = $query->orderBy(['date' => SORT_DESC])
+			->offset($pagination->offset)
+			->limit($pagination->limit)
+			->all();
+		Posts::setNumbers($posts);
+		
+        return $this->render('index', [
+			'posts' => $posts,
+			'active_page' => Yii::$app->request->get("page", 1),
+			'count_pages' => $pagination->getPageCount(),
+			'pagination' => $pagination
+		]);
     }
+	
+	public function actionAuthor()
+	{
+		return $this->render('author');
+	}
+	
+	public function actionVideo()
+	{
+		$courses = Courses::find()->orderBy(['id' => SORT_DESC])->all();
+		
+		return $this->render('video', [
+			'courses' => $courses
+		]);
+	}
+	
+	public function actionRev()
+	{
+		$reviews = Reviews::find()->orderBy('rand()')->all();
+		
+		return $this->render('rev', [
+			'reviews' => $reviews
+		]);
+	}
+	
+	public function actionSites()
+	{
+		$sites = Sites::find()->where(['active' => 1])->orderBy(['id' => SORT_DESC])->all();
+		return $this->render('sites', [
+			'sites' => $sites
+		]);
+	}
+	
+	public function actionReleases()
+	{
+		$query = Posts::find()->where(['hide' => 0, 'is_release' => 1]);
+		$pagination = new Pagination([
+			'defaultPageSize' => 5,
+			'totalCount' => $query->count()
+		]);
+		
+		$posts = $query->orderBy(['date' => SORT_DESC])
+			->offset($pagination->offset)
+			->limit($pagination->limit)
+			->all();
+		Posts::setNumbers($posts);
+		$minicourses = Minicourses::find()->all();
+		return $this->render('releases', [
+			'posts' => $posts,
+			'minicourses' => $minicourses,
+			'active_page' => Yii::$app->request->get("page", 1),
+			'count_pages' => $pagination->getPageCount(),
+			'pagination' => $pagination
+		]);
+	}
+	
+	public function actionAddsite()
+	{
+		$model = new SiteForm();
+		
+		if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+			
+			$site = new Sites();
+			$site->address = $model->address;
+			$site->description = $model->description;
+			$site->save();
+			return $this->render('addsite', [
+				'model' => $model,
+				'success' => true,
+				'error' => false
+			]);
+		} else {
+			if (isset($_POST["address"])) $error = true;
+			else $error = false;
+			return $this->render('addsite', [
+				'model' => $model,
+				'success' => false,
+				'error' => $error
+			]);
+		}
+	}
+	
+	public function actionPost()
+	{
+		$post = Posts::find()->where(['id' => Yii::$app->getRequest()->getQueryParam('id')])->one();
+		Posts::setNumbers([$post]);
+		return $this->render('post', [
+			'post' => $post
+		]);
+	}
+	
+	public function actionSearch()
+	{
+		$q = Yii::$app->getRequest()->getQueryParam('q');
+		$query = Posts::find()->where(['hide' => 0])->where(['like', 'full_text', $q]);
+		$pagination = new Pagination([
+			'defaultPageSize' => 5,
+			'totalCount' => $query->count()
+		]);
+		
+		$posts = $query->offset($pagination->offset)
+			->limit($pagination->limit)
+			->all();
+		Posts::setNumbers($posts);
+		
+        return $this->render('search', [
+			'posts' => $posts,
+			'q' => $q,
+			'active_page' => Yii::$app->request->get("page", 1),
+			'count_pages' => $pagination->getPageCount(),
+			'pagination' => $pagination
+		]);
+	}
 
-    public function actionLogin()
-    {
-        if (!\Yii::$app->user->isGuest) {
-            return $this->goHome();
+    public function actionMy(){
+        $model = new MyForm();
+        if ($model->load(Yii::$app->request->post()) && $model->validate())
+        {
+            //model loaded and validated
+            return $this->render('my-confirm', ['model'=>$model]);
+        } else {
+            return $this->render('my', ['model'=> $model]);
         }
-
-        $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
-        }
-        return $this->render('login', [
-            'model' => $model,
-        ]);
     }
-
-    public function actionLogout()
-    {
-        Yii::$app->user->logout();
-
-        return $this->goHome();
-    }
-
-    public function actionContact()
-    {
-        $model = new ContactForm();
-        if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
-            Yii::$app->session->setFlash('contactFormSubmitted');
-
-            return $this->refresh();
-        }
-        return $this->render('contact', [
-            'model' => $model,
-        ]);
-    }
-
-    public function actionAbout()
-    {
-        return $this->render('about');
-    }
-//    public function actionHello($message = 'World'){
-//        return $this->render('Hello', ['message'=>$message]);
-//    }
-    /**
-     *
-     * @return string
-     */
-//    public function actionForm(){
-//        $form = new MyForm();
-//        if($form->load(Yii::$app->request->post()) and $form->validate()){
-//            $name = Html::encode($form->name);
-//            $email = Html::encode($form->email);
-////            $file = $form->file;
-//            $form->file = UploadedFile::getInstance($form, 'file');
-//            $form->file->saveAs("img/".$form->file->baseName.".".$form->file->extension);
-//        } else {
-//            $name = '';
-//            $email = '';
-////            $file = '';
-//        }
-//        return $this->render('form', ['form'=>$form,
-//        'name'=>$name,
-//        'email'=>$email,
-////                'file'=>$file,
-//        ]
-//        );
-//    }
-////    public function actionComments(){
-//        $comments = Comments::find();
-//        $pagination = new Pagination([
-//            'defaultPageSize'=>2,
-//            'totalCount'=>$comments->count()
-//        ]);
-//        $comments = $comments->offset($pagination->offset)->limit($pagination->limit)->all();
-//
-//        $cookies =Yii::$app->request->cookies;
-//
-//        return $this->render('comments',
-//            [
-//                'comments'=>$comments,
-//            'pagination'=>$pagination,
-//                'name'=>$cookies->getValue('name')
-//            ]
-//    );
-//    }
-//    public function actionUser(){
-//        $name = Yii::$app->request->get("name");
-//        $cookie = Yii::$app->response->cookies;
-//        $cookie->add(new \yii\web\Cookie(
-//            [
-//                'name'=> 'name',
-//                'value'=> $name
-//            ]
-//        ));
-//        $session->set('name', $name);
-//        return $this->render('user',[
-//            'name'=>$name
-//        ]);
-//    }
 }
