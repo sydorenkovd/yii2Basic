@@ -103,56 +103,56 @@ class SiteController extends Controller
      *
      * @return string
      */
-    public function actionForm(){
-        $form = new MyForm();
-        if($form->load(Yii::$app->request->post()) and $form->validate()){
-            $name = Html::encode($form->name);
-            $email = Html::encode($form->email);
-//            $file = $form->file;
-            $form->file = UploadedFile::getInstance($form, 'file');
-            $form->file->saveAs("img/".$form->file->baseName.".".$form->file->extension);
-        } else {
-            $name = '';
-            $email = '';
-//            $file = '';
-        }
-        return $this->render('form', ['form'=>$form,
-        'name'=>$name,
-        'email'=>$email,
-//                'file'=>$file,
-        ]
-        );
-    }
-    public function actionComments(){
-        $comments = Comments::find();
-        $pagination = new Pagination([
-            'defaultPageSize'=>2,
-            'totalCount'=>$comments->count()
-        ]);
-        $comments = $comments->offset($pagination->offset)->limit($pagination->limit)->all();
-
-        $cookies =Yii::$app->request->cookies;
-
-        return $this->render('comments',
-            [
-                'comments'=>$comments,
-            'pagination'=>$pagination,
-                'name'=>$cookies->getValue('name')
-            ]
-    );
-    }
-    public function actionUser(){
-        $name = Yii::$app->request->get("name");
-        $cookie = Yii::$app->response->cookies;
-        $cookie->add(new \yii\web\Cookie(
-            [
-                'name'=> 'name',
-                'value'=> $name
-            ]
-        ));
-        $session->set('name', $name);
-        return $this->render('user',[
-            'name'=>$name
-        ]);
-    }
+//    public function actionForm(){
+//        $form = new MyForm();
+//        if($form->load(Yii::$app->request->post()) and $form->validate()){
+//            $name = Html::encode($form->name);
+//            $email = Html::encode($form->email);
+////            $file = $form->file;
+//            $form->file = UploadedFile::getInstance($form, 'file');
+//            $form->file->saveAs("img/".$form->file->baseName.".".$form->file->extension);
+//        } else {
+//            $name = '';
+//            $email = '';
+////            $file = '';
+//        }
+//        return $this->render('form', ['form'=>$form,
+//        'name'=>$name,
+//        'email'=>$email,
+////                'file'=>$file,
+//        ]
+//        );
+//    }
+////    public function actionComments(){
+//        $comments = Comments::find();
+//        $pagination = new Pagination([
+//            'defaultPageSize'=>2,
+//            'totalCount'=>$comments->count()
+//        ]);
+//        $comments = $comments->offset($pagination->offset)->limit($pagination->limit)->all();
+//
+//        $cookies =Yii::$app->request->cookies;
+//
+//        return $this->render('comments',
+//            [
+//                'comments'=>$comments,
+//            'pagination'=>$pagination,
+//                'name'=>$cookies->getValue('name')
+//            ]
+//    );
+//    }
+//    public function actionUser(){
+//        $name = Yii::$app->request->get("name");
+//        $cookie = Yii::$app->response->cookies;
+//        $cookie->add(new \yii\web\Cookie(
+//            [
+//                'name'=> 'name',
+//                'value'=> $name
+//            ]
+//        ));
+//        $session->set('name', $name);
+//        return $this->render('user',[
+//            'name'=>$name
+//        ]);
+//    }
 }
