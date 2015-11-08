@@ -1,13 +1,13 @@
 <?php
-$this->title = "Михаил Русаков";
+$this->title = "Victor Sydorenko";
 
 $this->registerMetaTag([
 	'name' => 'description',
-	'content' => 'Об авторе блога Русакове Михаиле Юрьевиче.'
+	'content' => 'About blog\'s authors Victor Sydorenko.'
 ]);
 $this->registerMetaTag([
 	'name' => 'keywords',
-	'content' => 'об авторе, михаил русаков, михаил юрьевич русаков'
+	'content' => 'об авторе, Victor Sydorenko, sydorenkovd'
 ])
 ?>
 
@@ -17,7 +17,7 @@ $this->registerMetaTag([
 		<?php include "likes.php"; ?>
 	<div class="post_text">
 		<p class="center">
-			<img src="/web/images/author.png" alt="Об авторе" />
+			<img src="/web/images/author.jpg" alt="Об авторе" />
 		</p>
 		<p>Спасибо, что захотели поинтересоваться автором этого блога! Меня зовут <b>Русаков Михаил Юрьевич</b>.</p>
 		<p>Для тех, кому интересно, как я вообще начинал (а начинал я абсолютно с нуля, как и многие из Вас, думаю), посмотрите это видео, которое так и называется: <a rel="external" href="<?=Yii::$app->urlManager->createUrl(['site/post', 'id' => 28])?>">Моя история</a>.</p>

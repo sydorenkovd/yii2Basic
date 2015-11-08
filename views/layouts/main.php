@@ -26,7 +26,7 @@ $model = new SearchForm();
     <meta charset="<?= Yii::$app->charset ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?= Html::csrfMetaTags() ?>
-    <title><?= Html::encode($this->title) ?></title>
+    <title>Blog sydorenkovd</title>
     <?php $this->head() ?>
 	<link href="/web/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 </head>
@@ -36,7 +36,7 @@ $model = new SearchForm();
 <div id="bg">
 		<div id="container">
 			<div id="header">
-				<img src="/web/images/header.png" alt="Шапка сайта" />
+<!--				<img src="/web/images/header.png" alt="Шапка сайта" />-->
 			</div>
 			<div id="topmenu">
 				<ul>
@@ -57,13 +57,18 @@ $model = new SearchForm();
 							Видеоотзывы							</a>
 						</li>
 											<li>
-							<a rel="external" href="http://myrusakov.ru/" >
-							Мой сайт							</a>
+							<a rel="external" href="http://sydorenkovd.esy.es/" >
+							My site							</a>
 						</li>
 											<li>
 							<a  href="<?=Yii::$app->urlManager->createUrl(["site/sites"])?>" <?php if ($action == "sites") { ?>class="active"<?php } ?>>
 							Сайты учеников							</a>
 						</li>
+                    <li>
+                        <a  href="<?=Yii::$app->urlManager->createUrl(["country/index"])?>"
+                            <?php if ("sites" == $action) { ?>class="active"<?php } ?>>
+                            Country						</a>
+                    </li>
 									</ul>
 				<div id="form_search">
 					<?php $form = ActiveForm::begin(); ?>
@@ -91,8 +96,8 @@ $model = new SearchForm();
 															<div class="right_block">
 								<?php if ($action == "index") { ?>	
 									<div id="author">
-	<h3>Михаил Русаков</h3>
-	<img src="/web/images/mr.png" alt="Михаил Русаков" />
+	<h3>Victor Sydorenko</h3>
+	<img src="/web/images/author.jpg" alt="Viktor Sydorenko" />
 	<br />
 	<a href="<?=Yii::$app->urlManager->createUrl(["site/author"])?>">Об авторе</a>
 </div>			
