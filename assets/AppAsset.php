@@ -28,6 +28,7 @@ class AppAsset extends AssetBundle
 		'//vk.com/js/api/openapi.js?63'
     ];
     public $depends = [
-        'app\assets\MyAppAsset'
+        'app\assets\MyAppAsset',
+        'yii\bootstrap\BootstrapAsset',
     ];
 }
