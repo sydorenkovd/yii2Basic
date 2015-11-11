@@ -380,7 +380,7 @@ $model = new SearchForm();
 				<table>
 					<tr>
 						<td>
-							<p>Blog.MyRusakov.ru <?=date("Y")?></p>
+							<p>Blog Sydorenkovd <?=date("Y")?></p>
 							<p>Все права защищены.</p>
 						</td>
 						<td class="right">

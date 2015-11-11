@@ -102,6 +102,10 @@ class CountryController extends Controller
 
         return $this->redirect(['index']);
     }
+    public function actionGuide(){
+//        $model = new Country();
+        return $this->render('guide');
+    }
 
     /**
      * Finds the Country model based on its primary key value.
