@@ -58,11 +58,6 @@ class SiteController extends Controller
     public function actions()
     {
         return [
-            'components' => [
-                'urlManager' => [
-                    'suffix' => '.html',
-                ],
-            ],
             'error' => [
                 'class' => 'yii\web\ErrorAction',
             ],
