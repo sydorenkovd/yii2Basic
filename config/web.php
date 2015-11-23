@@ -44,6 +44,13 @@ $config = [
                 ],
             ],
         ],
+        'urlManager' => [
+            'enablePrettyUrl' => true,
+            'showScriptName' => false,
+            'rules' => [
+                ['class' => 'app\components\SefRule', 'connectionID' => 'db']
+            ]
+        ],
         'db' => require(__DIR__ . '/db.php'),
     ],
     'params' => $params,
