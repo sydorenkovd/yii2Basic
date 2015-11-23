@@ -24,6 +24,11 @@ class SiteController extends Controller
     public function behaviors()
     {
         return [
+//            'components' => [
+//                'urlManager' => [
+//                    'suffix' => '.html',
+//                ],
+//            ],
             'access' => [
                 'class' => AccessControl::className(),
                 'only' => ['logout'],
