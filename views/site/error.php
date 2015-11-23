@@ -21,6 +21,8 @@ $this->title = $name;
         The above error occurred while the Web server was processing your request.
     </p>
     <p>
+<!--        <b>--><?//=Html::encode($name)?><!--</b><br>-->
+<!--        <b>--><?//=Html::encode($exception)?><!--</b>-->
         Please contact us if you think this is a server error. Thank you.
     </p>
 

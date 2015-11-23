@@ -24,11 +24,6 @@ class SiteController extends Controller
     public function behaviors()
     {
         return [
-//            'components' => [
-//                'urlManager' => [
-//                    'suffix' => '.html',
-//                ],
-//            ],
             'access' => [
                 'class' => AccessControl::className(),
                 'only' => ['logout'],
@@ -63,6 +58,11 @@ class SiteController extends Controller
     public function actions()
     {
         return [
+            'components' => [
+                'urlManager' => [
+                    'suffix' => '.html',
+                ],
+            ],
             'error' => [
                 'class' => 'yii\web\ErrorAction',
             ],
@@ -215,6 +215,13 @@ class SiteController extends Controller
             return $this->render('my-confirm', ['model'=>$model]);
         } else {
             return $this->render('my', ['model'=> $model]);
+        }
+    }
+    public function actionError()
+    {
+        $exception = Yii::$app->errorHandler->exception;
+        if ($exception !== null) {
+            return $this->render('error', ['exception' => $exception]);
         }
     }
 }
