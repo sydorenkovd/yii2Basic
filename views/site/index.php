@@ -1,15 +1,15 @@
 <?php
 use yii\widgets\LinkPager;
 
-$this->title = "Личный блог Михаила Русакова";
+$this->title = "Blog Victor Sydorenko";
 
 $this->registerMetaTag([
 	'name' => 'description',
-	'content' => 'Личный блог Михаила Русакова и его выпуски рассылки.'
+	'content' => 'Blog Victor\'s Sydorenko.'
 ]);
 $this->registerMetaTag([
 	'name' => 'keywords',
-	'content' => 'михаил русаков, блог михаил русаков, рассылка михаил русаков'
+	'content' => 'sydorenkovd'
 ])
 
 ?>

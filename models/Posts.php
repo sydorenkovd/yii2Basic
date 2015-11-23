@@ -41,7 +41,9 @@ class Posts extends ActiveRecord
 		$text = preg_replace($reg, str_replace(array("%name%", "%width%", "%height%"), array("\\1", "\\2", "\\3"), file_get_contents(Yii::$app->basePath.Yii::$app->params["dir_tmpl"]."flowplayer.tpl")), $text);
 		return $text;
 	}
-	
+	/*
+	 * Устанавливает порядковый номер новости
+	 */
 	public static function setNumbers($posts) {
 		$all_releases = Posts::find()->where(['is_release' => 1])->orderBy("date")->all();
 		$number = 1;

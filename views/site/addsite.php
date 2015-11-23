@@ -6,11 +6,11 @@ $this->title = "Добавить сайт";
 
 $this->registerMetaTag([
 	'name' => 'description',
-	'content' => 'Добавить сайт на блог Михаила Русакова.'
+	'content' => 'Add site to sydorenkovd.'
 ]);
 $this->registerMetaTag([
 	'name' => 'keywords',
-	'content' => 'добавить сайт, добавить сайт блог, добавить сайт блог михаил русаков'
+	'content' => 'добавить сайт, добавить сайт блог'
 ])
 ?>
 <div id="addsite">

@@ -131,7 +131,7 @@ $model = new SearchForm();
 						</tr>
 					</table>
 					<p class="center">
-						<a rel="external" href="http://srs.myrusakov.ru/freefl">Получить этот курс Бесплатно</a>
+						<a rel="external" href="">Получить этот курс Бесплатно</a>
 					</p>
 				</div>
 							<div class="hide">
@@ -152,7 +152,7 @@ $model = new SearchForm();
 						</tr>
 					</table>
 					<p class="center">
-						<a rel="external" href="http://srs.myrusakov.ru/freewp">Получить этот курс Бесплатно</a>
+						<a rel="external" href="">Получить этот курс Бесплатно</a>
 					</p>
 				</div>
 							<div class="hide">
@@ -173,7 +173,7 @@ $model = new SearchForm();
 						</tr>
 					</table>
 					<p class="center">
-						<a rel="external" href="http://srs.myrusakov.ru/freehtml5">Получить этот курс Бесплатно</a>
+						<a rel="external" href="">Получить этот курс Бесплатно</a>
 					</p>
 				</div>
 							<div class="hide">
@@ -194,7 +194,7 @@ $model = new SearchForm();
 						</tr>
 					</table>
 					<p class="center">
-						<a rel="external" href="http://srs.myrusakov.ru/freephp2">Получить этот курс Бесплатно</a>
+						<a rel="external" href="">Получить этот курс Бесплатно</a>
 					</p>
 				</div>
 							<div class="hide">
@@ -215,7 +215,7 @@ $model = new SearchForm();
 						</tr>
 					</table>
 					<p class="center">
-						<a rel="external" href="http://srs.myrusakov.ru/freejs">Получить этот курс Бесплатно</a>
+						<a rel="external" href="">Получить этот курс Бесплатно</a>
 					</p>
 				</div>
 							<div class="hide">
@@ -236,7 +236,7 @@ $model = new SearchForm();
 						</tr>
 					</table>
 					<p class="center">
-						<a rel="external" href="http://srs.myrusakov.ru/book">Получить этот курс Бесплатно</a>
+						<a rel="external" href="">Получить этот курс Бесплатно</a>
 					</p>
 				</div>
 							<div class="hide">
@@ -257,7 +257,7 @@ $model = new SearchForm();
 						</tr>
 					</table>
 					<p class="center">
-						<a rel="external" href="http://srs.myrusakov.ru/freeim">Получить этот курс Бесплатно</a>
+						<a rel="external" href="">Получить этот курс Бесплатно</a>
 					</p>
 				</div>
 							<div class="hide">
@@ -278,7 +278,7 @@ $model = new SearchForm();
 						</tr>
 					</table>
 					<p class="center">
-						<a rel="external" href="http://srs.myrusakov.ru/freemakeup">Получить этот курс Бесплатно</a>
+						<a rel="external" href="">Получить этот курс Бесплатно</a>
 					</p>
 				</div>
 							<div class="hide">
@@ -299,7 +299,7 @@ $model = new SearchForm();
 						</tr>
 					</table>
 					<p class="center">
-						<a rel="external" href="http://srs.myrusakov.ru/freephp">Получить этот курс Бесплатно</a>
+						<a rel="external" href="">Получить этот курс Бесплатно</a>
 					</p>
 				</div>
 							<div class="hide">
@@ -320,7 +320,7 @@ $model = new SearchForm();
 						</tr>
 					</table>
 					<p class="center">
-						<a rel="external" href="http://srs.myrusakov.ru/html">Получить этот курс Бесплатно</a>
+						<a rel="external" href="">Получить этот курс Бесплатно</a>
 					</p>
 				</div>
 					</td>	
