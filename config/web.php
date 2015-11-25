@@ -11,11 +11,11 @@ $config = [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => '19701izutef',
         ],
-        'urlManager'=> [
-            'enablePrettyUrl'=> false,
-            'showScriptName'=> false,
-            'rules'=>[
-                'about'=>'site/about'
+        'urlManager' => [
+            'enablePrettyUrl' => false,
+            'showScriptName' => false,
+            'rules' => [
+                'about' => 'site/about'
             ]
         ],
         'cache' => [

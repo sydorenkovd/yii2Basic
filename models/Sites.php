@@ -5,6 +5,7 @@ use yii\db\ActiveRecord;
 
 class Sites extends ActiveRecord
 {
-	
+
 }
+
 ?>

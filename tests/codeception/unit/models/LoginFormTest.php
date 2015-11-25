@@ -11,12 +11,6 @@ class LoginFormTest extends TestCase
 {
     use Specify;
 
-    protected function tearDown()
-    {
-        Yii::$app->user->logout();
-        parent::tearDown();
-    }
-
     public function testLoginNoUser()
     {
         $model = new LoginForm([
@@ -56,6 +50,12 @@ class LoginFormTest extends TestCase
             expect('error message should not be set', $model->errors)->hasntKey('password');
             expect('user should be logged in', Yii::$app->user->isGuest)->false();
         });
+    }
+
+    protected function tearDown()
+    {
+        Yii::$app->user->logout();
+        parent::tearDown();
     }
 
 }

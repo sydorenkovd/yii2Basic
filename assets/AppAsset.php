@@ -20,12 +20,12 @@ class AppAsset extends AssetBundle
     public $css = [
         'css/ie.css'
     ];
-	
-	public $cssOptions = ['conditon' => 'lte IE8'];
-	
+
+    public $cssOptions = ['conditon' => 'lte IE8'];
+
     public $js = [
-		'js/functions.js',
-		'//vk.com/js/api/openapi.js?63'
+        'js/functions.js',
+        '//vk.com/js/api/openapi.js?63'
     ];
     public $depends = [
         'app\assets\MyAppAsset',

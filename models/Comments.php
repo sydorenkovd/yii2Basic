@@ -1,8 +1,9 @@
 <?php
 namespace app\models;
 
-    use yii\db\ActiveRecord;
+use yii\db\ActiveRecord;
 
-    class Comments extends ActiveRecord{
+class Comments extends ActiveRecord
+{
 
-    }
+}
