@@ -23,7 +23,7 @@
         <div class="clear"></div>
     </div>
     <p class="more">
-        <a href="<?= $post->link ?>">Читать полностью</a>
-        <a href="<?= Yii::$app->urlManager->createUrl(["site/releases"]) ?>">Другие выпуски</a>
+        <a href="<?= $post->link ?>">Read</a> |
+        <a href="<?= Yii::$app->urlManager->createUrl(["site/releases"]) ?>">Other</a>
     </p>
 </div>

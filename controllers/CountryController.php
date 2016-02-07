@@ -25,7 +25,6 @@ class CountryController extends Controller
             ],
         ];
     }
-
     /**
      * Lists all Country models.
      * @return mixed

@@ -7,7 +7,6 @@ use yii\helpers\Html;
 class HelloWidget extends Widget
 {
     public $message;
-
     public function init()
     {
         parent::init();

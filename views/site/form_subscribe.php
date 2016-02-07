@@ -1,7 +1,7 @@
 <div class="form_subscribe">
     <h3>Заполните форму</h3>
 
-    <form name="subscribe_<?= $course->id ?>" action="http://srs.myrusakov.ru/subscribe" method="post"
+    <form name="subscribe_<?= $course->id ?>" action="" method="post"
           onsubmit="return SR_submit(this)">
         <p>
             <input type="text" class="input" name="name" value="Ваше имя"
@@ -18,13 +18,13 @@
             <tr>
                 <td>
                     <input type="hidden" name="delivery_id" value="<?= $course->did ?>"/>
-                    <input type="image" src="/web/images/button_subscribe_left.png" alt="Получить Видеокурс"/>
+                    <input type="image" src="/web/images/button_subscribe_left.png" alt="Send"/>
                 </td>
                 <td class="center">
-                    <input type="submit" class="bg_center" value="Получить Видеокурс"/>
+                    <input type="submit" class="bg_center" value="Send"/>
                 </td>
                 <td>
-                    <input type="image" src="/web/images/button_subscribe_right.png" alt="Получить Видеокурс"/>
+                    <input type="image" src="/web/images/button_subscribe_right.png" alt="Send"/>
                 </td>
             </tr>
         </table>
