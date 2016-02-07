@@ -1,4 +1,5 @@
-<?php // $item is from actionItemDetail ?>
+<?php echo $this->context->renderPartial('_copyright');
+// $item is from actionItemDetail ?>
 
 <h2>News Item Detail</h2>
         <br />
