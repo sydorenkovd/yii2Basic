@@ -1,6 +1,7 @@
 <?php
 use yii\widgets\LinkPager;
 
+$this->params['breadcrumbs'][] = "Mysite";
 $this->title = "Blog Victor Sydorenko";
 
 $this->registerMetaTag([

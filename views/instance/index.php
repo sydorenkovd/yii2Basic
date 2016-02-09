@@ -1,4 +1,8 @@
 <?php
+
+$this->title = 'About';
+$this->params['breadcrumbs'][] = $this->title;
+
 echo $this->context->renderPartial('_copyright');
 // $newsList is from actionItemsList ?>
 <table>

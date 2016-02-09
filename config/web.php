@@ -15,8 +15,22 @@ $config = [
             'enablePrettyUrl' => false,
             'showScriptName' => false,
             'rules' => [
-                'about' => 'site/about'
-            ]
+                'test-rules/<year:\d{4}>/items-list' => 'test-rules/items-list',
+                [
+                    'pattern' => 'test-rules/<category:\w+>/items-list',
+                    'route' => 'test-rules/items-list',
+                    'defaults' => ['category' => 'shopping']
+                ],
+                [
+                    'pattern' => '<lang:\w+>/<controller>/<action>',
+                    'route' => '<controller>/<action>',
+                ],
+                [
+                    'class' => 'app\components\TestUrlRule',
+                    // ...configure other properties...
+                ],
+
+            ],
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
